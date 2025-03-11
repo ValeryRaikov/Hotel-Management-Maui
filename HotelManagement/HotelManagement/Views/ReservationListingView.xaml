@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="HotelManagement.Views.ReservationListingView"
+             Title="Current Reservations"
+             BackgroundColor="White"
+             Padding="15, 10">
+    <Grid RowDefinitions="Auto,Auto" MaximumWidthRequest="600">
+
+        <Grid Grid.Row="0" ColumnDefinitions="*,Auto">
+
+            <Label 
+                Grid.Column="0" 
+                Text="View Reservations"
+                FontSize="24"
+                FontAttributes="Bold"
+            />
+
+            <Button 
+                Grid.Column="1" 
+                Text="Make Reservation" 
+                Command="{Binding MakeReservationCommand}" 
+                FontSize="16"
+                FontAttributes="Bold"
+                BackgroundColor="Green"
+                Margin="10,0,0,0"
+            />
+        </Grid>
+
+        <CollectionView Grid.Row="1" Margin="0,25,0,0" ItemsSource="{Binding Reservations}">
+            <CollectionView.Header>
+                <Grid ColumnDefinitions="*,*,*,*" BackgroundColor="LightGray" Padding="5">
+                    <Label Grid.Column="0" Text="Room ID" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Column="1" Text="Username" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Column="2" Text="Start Date" FontSize="16" FontAttributes="Bold" />
+                    <Label Grid.Column="3" Text="End Date" FontSize="16" FontAttributes="Bold" />
+                </Grid>
+            </CollectionView.Header>
+
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid ColumnDefinitions="*,*,*,*" Padding="5">
+                        <Label Grid.Column="0" Text="{Binding RoomID}" />
+                        <Label Grid.Column="1" Text="{Binding Username}" />
+                        <Label Grid.Column="2" Text="{Binding StartDate}" />
+                        <Label Grid.Column="3" Text="{Binding EndDate}" />
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </Grid>
+</ContentPage>
